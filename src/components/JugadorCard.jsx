@@ -23,13 +23,13 @@ function JugadorCard({ jugador }) {
                 />
             </div>
 
-            {/* Título de la tarjeta corregido para jerarquía semántica */}
+            
             <div className="card-title-section">
                 <span className="card-badge">Ficha del Jugador</span>
                 <h3 className="player-name">{jugador?.name}</h3>
             </div>
 
-            {/* Grid de atributos */}
+      
             <div className="player-specs">
                 <div className="spec-item">
                     <span className="spec-label">ID</span>
@@ -45,7 +45,7 @@ function JugadorCard({ jugador }) {
                 </div>
             </div>
 
-            {/* Clubes y selección */}
+            
             <div className="player-team-info">
                 <div className="team-item">
                     <span className="team-icon">🏢</span>

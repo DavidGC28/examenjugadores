@@ -14,7 +14,7 @@ function App() {
   return (
     <div>
     <Header/>
-    <h1>EXAMEN</h1>
+    <h1>Vota por tu favorito</h1>
     <Navbar/>
     <JugadorList/>
     <Footer/>
