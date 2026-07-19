@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import JugadorCard from "./JugadorCard";
+import "./JugadorList.css";
 
 function JugadorList() {
     const [jugador, setJugador] = useState([]); //esto cambia porque aqui van las variables de estado de futbolistas o lo que sea en el examen
@@ -28,27 +29,47 @@ function JugadorList() {
             setCargando(false);
         });
 }, []);
+
     if(cargando){
-        return (<div>
-            <h1>Los jugadores estan cargando</h1>
-        </div>);
-    }
-    if(error){
-        return(
-            <div>
-                <h1>NO SE PUDO CONECTAR A LA API :{error}</h1>
+        return (
+            <div className="list-loading-container">
+                <div className="loading-spinner-wrapper">
+                    <div className="spinner-pulse-bg"></div>
+                    <div className="loading-spinner"></div>
+                </div>
+                <h2 className="loading-title">Los jugadores están cargando</h2>
+                <p className="loading-subtitle">Sincronizando base de datos deportiva...</p>
             </div>
         );
     }
-    return (<div>
-        <h1>Seccion de Jugadores</h1>
-        <div>
-            {jugador.map((jugador)=> (
-                <JugadorCard key={jugador.id} jugador={jugador}/>  //esto cambia a los datos solicitados
-            ))}
+    if(error){
+        return(
+            <div className="list-error-container">
+                <div className="error-card">
+                    <div className="error-icon-wrapper">⚠️</div>
+                    <h2 className="error-title">NO SE PUDO CONECTAR A LA API</h2>
+                    <p className="error-message">Detalle del error:</p>
+                    <code className="error-code-block">{error}</code>
+                    <button className="error-btn" onClick={() => window.location.reload()}>
+                        Reintentar
+                    </button>
+                </div>
+            </div>
+        );
+    }
+    return (
+        <div className="list-container">
+            <div className="list-header">
+                <h2 className="list-title">Sección de Jugadores</h2>
+                <div className="list-title-underline"></div>
+            </div>
+            <div className="jugadores-grid">
+                {jugador.map((jugador)=> (
+                    <JugadorCard key={jugador.id} jugador={jugador}/>  //esto cambia a los datos solicitados
+                ))}
+            </div>
         </div>
-    </div>);
+    );
 }
 
-export default JugadorList
-
+export default JugadorList;

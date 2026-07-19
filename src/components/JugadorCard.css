@@ -1,0 +1,221 @@
+.jugador-card {
+  position: relative;
+  background: rgba(13, 13, 22, 0.7);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Card Glow Effect */
+.card-badge-glow {
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(157, 78, 221, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+/* Card Hover Changes */
+.jugador-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--secondary-border);
+  background: rgba(20, 20, 36, 0.85);
+  box-shadow: 0 15px 35px rgba(0, 255, 135, 0.1), 0 0 15px rgba(157, 78, 221, 0.05);
+}
+
+.jugador-card:hover .card-badge-glow {
+  background: radial-gradient(circle, rgba(0, 255, 135, 0.2) 0%, transparent 70%);
+  width: 160px;
+  height: 160px;
+}
+
+/* Header Information inside Card */
+.card-top-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+  z-index: 2;
+}
+
+.player-number {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--secondary);
+  text-shadow: 0 0 8px rgba(0, 255, 135, 0.3);
+}
+
+.player-position-tag {
+  background: rgba(157, 78, 221, 0.1);
+  color: var(--primary);
+  border: 1px solid var(--primary-border);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Player Avatar styling */
+.player-photo-wrapper {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  margin-bottom: 20px;
+  z-index: 2;
+}
+
+.player-photo-glow {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  opacity: 0.5;
+  filter: blur(6px);
+  transition: all 0.3s ease;
+}
+
+.jugador-card:hover .player-photo-glow {
+  opacity: 0.8;
+  filter: blur(8px);
+}
+
+.player-photo {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--bg-card);
+  background: #171725;
+}
+
+/* Card Main Info */
+.card-title-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 18px;
+  z-index: 2;
+  width: 100%;
+}
+
+.card-badge {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.player-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Specs/Atributos Grid */
+.player-specs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 20px;
+  z-index: 2;
+}
+
+.spec-item, .spec-item-full {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.spec-item-full {
+  grid-column: span 2;
+}
+
+.spec-label {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.spec-value {
+  font-size: 0.85rem;
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+/* Clubes y selección */
+.player-team-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  border-top: 1px dashed var(--border-subtle);
+  padding-top: 18px;
+  z-index: 2;
+}
+
+.team-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+}
+
+.team-icon {
+  font-size: 1.1rem;
+  background: rgba(255, 255, 255, 0.04);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  border: 1px solid var(--border-subtle);
+}
+
+.team-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.team-label {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.team-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-main);
+}

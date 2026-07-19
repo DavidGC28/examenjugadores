@@ -1,0 +1,111 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  background: var(--bg-navbar);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-subtle);
+  box-sizing: border-box;
+  padding: 12px 24px;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar-icon {
+  font-size: 1.5rem;
+  animation: bounce 2s infinite ease-in-out;
+}
+
+.navbar-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, var(--text-main) 50%, var(--primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.navbar-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbar-info-text {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.navbar-badge {
+  background-color: var(--secondary-glow);
+  color: var(--secondary);
+  border: 1px solid var(--secondary-border);
+  font-size: 0.7rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.navbar-badge::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: var(--secondary);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--secondary);
+}
+
+/* Animations */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(15deg);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .navbar {
+    padding: 10px 16px;
+  }
+  
+  .navbar-container {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .navbar-title {
+    font-size: 1.1rem;
+  }
+  
+  .navbar-info-text {
+    display: none; /* Hide helper text on very small screens for cleanliness */
+  }
+}
