@@ -1,6 +1,6 @@
 function Navbar(){
     <div>
-        <h1>Total de Pokemones</h1>
+        <h1> Total de Jugadores </h1>
     </div>
 }
 
