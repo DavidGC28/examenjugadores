@@ -1,51 +1,36 @@
 import { useEffect, useState } from "react";
-import PokemonCard from "./JugadorCard";
+import JugadorCard from "./JugadorCard";
 
-function PokemonList() {
-    const [pokemones, setPokemones] = useState([]); //esto cambia porque aqui van las variables de estado de futbolistas o lo que sea en el examen
+function JugadorList() {
+    const [jugador, setJugador] = useState([]); //esto cambia porque aqui van las variables de estado de futbolistas o lo que sea en el examen
     const [cargando, setCargando] = useState(true);
     const [error, setError] = useState(null);
 
-    useEffect(() => {
+ useEffect(() => {
+    setCargando(true);
 
-        setCargando(true);
-
-        fetch('https://pokeapi.co/api/v2/pokemon')
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error(`Error HTTP: ${response.status}`);
-                }
-                console.log(response)
-                return response.json();
-            })
-            .then((data) => {
-                const peticiones = data.results.map((pokemon) => //aqui tambien se ace el map con la variable de estado de futbolista
-                    fetch(pokemon.url).then((response) => {  //aqui cambia pokemon por futbolista
-                        if (!response.ok) {
-                            throw new Error("No se pudo cargar un Pokémon");
-                        }
-                        console.log("Respuestas de la Api", response);
-                        return response.json();
-
-                    })
-                );
-
-                return Promise.all(peticiones);
-            })
-            .then((detalles) => {
-                console.log("Detalles de pokemon", detalles);
-                setPokemones(detalles); //variable cambia de nombre
-              //onCargados(detalles.length);
-                setCargando(false);
-            })
-            .catch((errorPeticion) => {
-                setError(errorPeticion.message);
-                setCargando(false);
-            });
-    }, [])
+    fetch('https://jugadores.up.railway.app/players')
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`Error HTTP: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then((data) => {
+            // Como tu API devuelve { "data": [...] }, accedemos directamente a data.data
+            console.log("Datos recibidos:", data.data);
+            
+            setJugador(data.data); // Guardamos el array de jugadores
+            setCargando(false);
+        })
+        .catch((errorPeticion) => {
+            setError(errorPeticion.message);
+            setCargando(false);
+        });
+}, []);
     if(cargando){
         return (<div>
-            <h1>Los pokemones estan cargando</h1>
+            <h1>Los jugadores estan cargando</h1>
         </div>);
     }
     if(error){
@@ -56,14 +41,14 @@ function PokemonList() {
         );
     }
     return (<div>
-        <h1>Seccion de Pokemones</h1>
+        <h1>Seccion de Jugadores</h1>
         <div>
-            {pokemones.map((pokemon)=> (
-                <PokemonCard key={pokemon.id} pokemon={pokemon}/>  //esto cambia a los datos solicitados
+            {jugador.map((jugador)=> (
+                <JugadorCard key={jugador.id} jugador={jugador}/>  //esto cambia a los datos solicitados
             ))}
         </div>
     </div>);
 }
 
-export default PokemonList
+export default JugadorList
 
