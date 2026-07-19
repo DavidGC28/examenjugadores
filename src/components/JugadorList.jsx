@@ -3,7 +3,7 @@ import JugadorCard from "./JugadorCard";
 import "./JugadorList.css";
 
 function JugadorList() {
-    const [jugador, setJugador] = useState([]); //esto cambia porque aqui van las variables de estado de futbolistas o lo que sea en el examen
+    const [jugador, setJugador] = useState([]);
     const [cargando, setCargando] = useState(true);
     const [error, setError] = useState(null);
 
@@ -18,10 +18,10 @@ function JugadorList() {
             return response.json();
         })
         .then((data) => {
-            // Como tu API devuelve { "data": [...] }, accedemos directamente a data.data
+            
             console.log("Datos recibidos:", data.data);
             
-            setJugador(data.data); // Guardamos el array de jugadores
+            setJugador(data.data); 
             setCargando(false);
         })
         .catch((errorPeticion) => {

@@ -7,13 +7,13 @@ function JugadorCard({ jugador }) {
         <div className="jugador-card">
             <div className="card-badge-glow"></div>
             
-            {/* Header de la tarjeta */}
+           
             <div className="card-top-info">
                 <span className="player-number">#{jugador?.number || '00'}</span>
                 <span className="player-position-tag">{jugador?.position || 'N/A'}</span>
             </div>
 
-            {/* Foto de perfil del jugador */}
+            
             <div className="player-photo-wrapper">
                 <div className="player-photo-glow"></div>
                 <img 
